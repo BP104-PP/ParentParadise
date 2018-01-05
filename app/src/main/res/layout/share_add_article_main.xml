@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe69a"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llActMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="文章分類：" />
+
+            <Spinner
+                android:id="@+id/spClassify1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:dropDownWidth="wrap_content"
+                android:entries="@array/main_classify_array"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBookData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="ISBN：" />
+
+            <EditText
+                android:id="@+id/etAddIsbn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:hint="請手動輸入國際書碼  或  掃描條碼"
+                android:singleLine="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btScan"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/amber_style_bottom"
+                android:onClick="OnScanClick"
+                android:text="掃描條碼 / QRcode"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/svAddArticle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp">
+
+                <GridView
+                    android:id="@+id/gvPhotoPicked"
+                    android:background="#d4d3d1"
+                    android:padding="4dp"
+                    android:numColumns="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:foregroundGravity="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:verticalSpacing="6dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/amber_style_bottom"
+                    android:onClick="OnPhotoClick"
+                    android:text="選取相片"
+                    android:textSize="10sp" />
+
+
+                <Button
+                    android:id="@+id/btSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:onClick="onSubmitClick"
+                    android:background="@drawable/amber_style_bottom"
+                    android:text="傳送分享文"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etDescribe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="請輸入分享內容...." />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

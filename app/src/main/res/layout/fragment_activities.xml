@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.project.pp.parentparadise.lin.ActFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/topNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="4dp"
+        android:background="#FFFFFF">
+
+        <RadioGroup
+            android:id="@+id/rgActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="活動清單"
+                android:textColor="@color/rbTxtFalse"
+                android:textSize="16sp"
+                android:background="@drawable/lin_rb_back"/>
+
+            <RadioButton
+                android:id="@+id/rbHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="活動紀錄"
+                android:textColor="@color/rbTxtFalse"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbWatch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="關注清單"
+                android:textColor="@color/rbTxtFalse"
+                android:textSize="16sp" />
+
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activityContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#F5F5F5">
+    </LinearLayout>
+
+</LinearLayout>

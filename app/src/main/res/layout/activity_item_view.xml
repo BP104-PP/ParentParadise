@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="6dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="1dp"
+        app:cardMaxElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivActImage"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:src="@drawable/lin_slide_image01" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="36sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="4dp"
+                android:text="2018 小騎士馬術冬令營 - 小牛仔也很忙！"
+                android:textColor="#333333" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlBt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/ivLike"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/lin_good_boder"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/ivLike"
+                        android:text="10" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlBt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/rlBt1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/ivWatch"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/lin_heart_boder2"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvWatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/ivWatch"
+                        android:text="20" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlBt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/rlBt2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/ivMsg"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/lin_msg2"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tvMsg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/ivMsg"
+                        android:text="0" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="6dp">
+                <Button
+                    android:id="@+id/btRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="#F5CF5B"
+                    android:focusable="false"
+                    android:onClick="clickRegister"
+                    android:text="報名" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

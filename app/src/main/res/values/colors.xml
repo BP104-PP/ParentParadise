@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F7C143</color>
+    <color name="colorPrimaryDark">#EE9601</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="rbTxtChecked1">#333333</color>
+    <color name="rbTxtFalse">#6B6B6B</color>
+    <color name="rbTxtChecked">#F2994A</color>
+    <color name="rbTxtFalse111">#575757</color>
+    <color name="rbTxtFalse2">#8B8D92</color>
+    <color name="bg_login">#f7c143</color>
+    <color name="bg_register">#f7c143</color>
+    <color name="bg_main">#428bca</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#222222</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#999999</color>
+    <color name="btn_login">#EE9601</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+</resources>

@@ -1,0 +1,158 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/slice"
+    android:orientation="vertical"
+    tools:context="com.project.pp.parentparadise.lin.HomeFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<Gallery
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+    </Gallery>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="8dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvHello"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hi，昱丞"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#785A00"/>
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="今天下著雨，出門注意別淋濕了唷！   "
+                        android:textSize="16sp"
+                        android:paddingTop="6dp"
+                        android:textColor="#785A00"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/lin_rain"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="2dp"
+            app:cardUseCompatPadding="true"
+            >
+
+        <!--<ImageView
+            android:id="@+id/ivSlide"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/lin_slidimage01" />-->
+
+            <ImageSwitcher
+                android:id="@+id/imageSwitcher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:keepScreenOn="true">
+            </ImageSwitcher>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="2dp"
+            app:cardUseCompatPadding="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lin_card"
+                android:scaleType="centerCrop"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="最新消息"
+                android:textSize="16dp"
+                android:textStyle="bold"
+
+                android:textColor="#FFFFFF"/>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="2dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lin_card"
+                android:scaleType="centerCrop"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="好友動態"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

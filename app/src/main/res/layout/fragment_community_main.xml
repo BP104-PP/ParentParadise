@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/topNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <RadioGroup
+            android:id="@+id/community_bar_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/com_family"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="2dp"
+                android:background="#F7DA8D"
+                android:text="好友/家人"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/com_chat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F7DA8D"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textStyle="bold"
+                android:text="聊天列表"
+                android:textSize="12sp" />
+
+
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/init_List"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

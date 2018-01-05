@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.pp.parentparadise">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
+	android:name=".amber.PhotoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".lin.ActSearchActivity" />
+        <activity android:name=".lin.ActQAActivity" />
+        <activity android:name=".lin.ActRegisterActivity" />
+        <activity android:name=".lin.ActEvaluationActivity" />
+        <activity android:name=".lin.ActPublishActivity" />
+        <activity
+            android:name=".amber.ShareAddArticle"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".amber.ShareAddMessage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".amber.FavoriteFragmentSweet" />
+        <activity android:name=".amber.FavoriteFragmentAct" />
+        <activity android:name=".amber.FavoriteFragmentBook" />
+        <activity android:name=".amber.FavoriteFragmentMedia" />
+        <activity android:name=".amber.FavoriteFragmentLife" />
+        <activity android:name=".freya.CommunityChatActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".lin.ActDetail" />
+        <activity android:name=".lin.PublisherActivity"></activity>
+        <activity
+            android:name=".freya.CommunityAdd"
+            android:label="@string/title_activity_community_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>
