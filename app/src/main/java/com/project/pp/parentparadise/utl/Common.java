@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 public class Common {
     private static final String TAG = "Common";
-    //public static String URL = "http://10.0.2.2:8080/ParentParadiseWeb";
-    public static String URL = "http://192.168.196.111:8080/ParentParadiseWeb";
+    public static String URL = "http://10.0.2.2:8080/ParentParadiseWeb";
+    //public static String URL = "http://192.168.196.111:8080/ParentParadiseWeb";
+
+    public final static String SUPER_PASSWORD = "bp104";
 
     // check if the device connect to the network
     public static boolean networkConnected(Activity activity) {
