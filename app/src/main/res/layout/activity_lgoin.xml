@@ -76,6 +76,11 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spLoginMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>
