@@ -21,16 +21,19 @@ public class ShareData {
     private String actID;
     private String message;
     private String image;
+    private String goodType;
+    
 
 
+	// Get Head Photo
     public ShareData(int photoNo){
         this.photoNo = photoNo;
     }
 
+    // OnBindVewHolder Get Photo
     public ShareData(int shareId, String image){
         this.shareId = shareId;
-        this.image = image;
-        
+        this.image = image;  
     }
 
     //Add Share Article
@@ -50,6 +53,13 @@ public class ShareData {
         this.goodCount = goodCount;
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+    
+    //InsertGoodCount
+    public ShareData(String goodType, int shareId, int memberNo ){
+        this.goodType = goodType;
+    		this.shareId = shareId;
+    		this.memberNo = memberNo;
     }
 
 
@@ -196,5 +206,12 @@ public class ShareData {
     public void setMessage(String message) {
         this.message = message;
     }
+    
+    public String getGoodType() {
+		return goodType;
+	}
 
+	public void setGoodType(String goodType) {
+		this.goodType = goodType;
+	}
 }

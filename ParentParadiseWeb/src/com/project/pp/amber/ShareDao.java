@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ShareDao {
 		String postDate = sDateFormat.format(new java.util.Date());
 		try {
 			connection = DriverManager.getConnection(DbUtl.URL, DbUtl.USER, DbUtl.PASSWORD);
-			ps = connection.prepareStatement(sql,ps.RETURN_GENERATED_KEYS);
+			ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, shareData.getMemberNo());
 			ps.setString(2, postDate);
 			ps.setString(3, shareData.getShareType());
@@ -232,4 +233,113 @@ public class ShareDao {
 		}
 		return photos;
 	}
+	
+	public int checkGood(String goodType, int shareId, int memberNo) {
+		String sql = "SELECT COUNT(member_no) FROM good WHERE member_no = ? AND record_id = ? AND record_type = ?;";		
+			Connection conn = null;
+			PreparedStatement ps = null;
+			int goodChecked = 0;
+			try {
+				conn = DriverManager.getConnection(DbUtl.URL, DbUtl.USER, DbUtl.PASSWORD);
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, memberNo);
+				ps.setInt(2, shareId);
+				ps.setString(3, goodType);
+				ResultSet rs = ps.executeQuery();
+				
+				while (rs.next()) {
+					goodChecked = rs.getInt(1);;
+				}
+				return goodChecked;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					ps.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println(goodChecked);
+			return goodChecked;
+			
+	}
+	
+	public int insertGood(String goodType, int shareId, int memberNo) {
+		int count = 0;
+		String sql = "INSERT INTO good"
+				+ "(record_type, record_id, member_no) "
+				+ "VALUES(?, ?, ?);";
+		String sql2 = "UPDATE share SET good_count = "
+				+ "(Select count ( member_no)  From good Where record_type = 'S' "
+				+ "and share.share_id = good.record_id) "
+				+ "Where share_id = ?;";
+		Connection connection = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
+		try {
+			connection = DriverManager.getConnection(DbUtl.URL, DbUtl.USER, DbUtl.PASSWORD);
+			ps = connection.prepareStatement(sql);
+			ps2 = connection.prepareStatement(sql2);
+			ps.setString(1,goodType);
+			ps.setInt(2, shareId);
+			ps.setInt(3, memberNo);
+			ps2.setInt(1, shareId);
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int deleteGood(String goodType, int shareId, int memberNo) {
+		int count = 0;
+		String sql = "DELETE FROM good WHERE record_type = ? AND record_id = ? AND member_no = ?;";
+		String sql2 = "UPDATE share SET good_count = "
+				+ "(Select count ( member_no)  From good Where record_type = 'S' "
+				+ "and share.share_id = good.record_id) "
+				+ "Where share_id = ?;";
+		Connection connection = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
+		try {
+			connection = DriverManager.getConnection(DbUtl.URL, DbUtl.USER, DbUtl.PASSWORD);
+			ps = connection.prepareStatement(sql);
+			ps2 = connection.prepareStatement(sql2);
+			ps.setString(1, goodType);
+			ps.setInt(2, shareId);
+			ps.setInt(3, memberNo);
+			ps2.setInt(1, shareId);
+			count = ps.executeUpdate();
+			ps2.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	
 }

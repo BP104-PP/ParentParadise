@@ -24,14 +24,8 @@ import com.project.pp.parentparadise.R;
 import com.project.pp.parentparadise.utl.Common;
 
 import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
-import static android.graphics.Color.rgb;
 
 /**
  * Created by Amber on 2017/12/5.
@@ -42,8 +36,6 @@ public class ShareFragmentSweet extends Fragment {
     private View view;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ImageView[] dots;           //點點數組合
-    private ImageView mImageView;
     private ShareTask shareGetAllTask;
     private DataAdapter dataAdapter;
 
@@ -116,8 +108,8 @@ public class ShareFragmentSweet extends Fragment {
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivHead;
-            TextView tvName, tvTime, tvDescribe, tvMCount, tvGCount, tvMore, tvMIcon;
+            ImageView ivHead, ivGoodIcon, ivMessageIcon;
+            TextView tvName, tvTime, tvDescribe, tvMCount, tvGCount, tvMore;
             RecyclerView rvPhotoList;
 
             MyViewHolder(View itemView) {
@@ -130,7 +122,8 @@ public class ShareFragmentSweet extends Fragment {
                 tvMCount = itemView.findViewById(R.id.tvMCount);
                 tvGCount = itemView.findViewById(R.id.tvGCount);
                 tvMore = itemView.findViewById(R.id.tvMore);
-                tvMIcon = itemView.findViewById(R.id.tvMIcon);
+                ivGoodIcon = itemView.findViewById(R.id.ivGoodIcon);
+                ivMessageIcon = itemView.findViewById(R.id.ivMessageIcon);
             }
         }
 
@@ -150,12 +143,12 @@ public class ShareFragmentSweet extends Fragment {
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             final ShareData data = dataList.get(position);
             String url = ShareCommon.URL + "/ShareServlet";
-            int memberNo = data.getMemberNo();
+            final int memberNo = data.getMemberNo();
+            final int shareId = data.getShareId();
             ShareGetHeadPhotoTask shareGetHeadTask = new ShareGetHeadPhotoTask(url, memberNo, imageSize, holder.ivHead);
             shareGetHeadTask.execute();
 
             holder.tvName.setText(data.getLastName() + data.getFirstName());
-
             holder.tvTime.setText(data.getPostDate());
 
             if (data.getContent().length() > 13) {
@@ -165,8 +158,44 @@ public class ShareFragmentSweet extends Fragment {
                 holder.tvDescribe.setText(data.getContent());
                 holder.tvMore.setVisibility(View.GONE);
             }
-
             holder.tvGCount.setText(String.valueOf(data.getGoodCount()));
+            holder.ivGoodIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String goodType = "S";
+                    if (Common.networkConnected(getActivity())) {
+                        String url = Common.URL + "/ShareServlet";
+                        int goodCount = 0;
+                        try {
+                            JsonObject jsonObject = new JsonObject();
+                            jsonObject.addProperty("action", "goodChecked");
+                            jsonObject.addProperty("memberNo", memberNo);
+                            jsonObject.addProperty("shareId", shareId);
+                            jsonObject.addProperty("goodType", goodType);
+                            String jsonOut = jsonObject.toString();
+                            ShareTask getGoodTask = new ShareTask(url, jsonOut);
+                            String jsonIn = getGoodTask.execute().get();
+                            Log.d(TAG, jsonIn);
+                            goodCount = Integer.parseInt(jsonIn);
+                        } catch (Exception e) {
+                            Log.e(TAG, e.toString());
+                        }
+                        System.out.println("goodChecked:" + goodCount);
+
+                        if (goodCount == 0 ) {
+                            holder.ivGoodIcon.setImageResource(R.drawable.lin_good);
+                            holder.tvGCount.setText(String.valueOf(data.getGoodCount()));
+                        } else {
+                            holder.ivGoodIcon.setImageResource(R.drawable.lin_good_boder);
+                            holder.tvGCount.setText(String.valueOf(data.getGoodCount()));
+                        }
+                    } else {
+                        Common.showToast(getActivity(), "NoNetwork");
+                    }
+
+                }
+            });
+
             holder.tvMCount.setText(String.valueOf(data.getMessageCount()));
 
             holder.tvMore.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +206,7 @@ public class ShareFragmentSweet extends Fragment {
                 }
             });
 
-            holder.tvMIcon.setOnClickListener(new View.OnClickListener() {
+            holder.ivMessageIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), ShareAddMessage.class);
@@ -190,7 +219,7 @@ public class ShareFragmentSweet extends Fragment {
             List<ShareData> photoList = null;
 
             if (ShareCommon.networkConnected(getActivity())) {
-                int shareId = data.getShareId();
+
                 url = ShareCommon.URL + "/ShareServlet";
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("action", "getPhotoList");
@@ -263,9 +292,10 @@ public class ShareFragmentSweet extends Fragment {
                 int photoNo = photoData.getPhotoNo();
                 ShareGetPhotoTask shareGetPhotoTask = new ShareGetPhotoTask(url, photoNo, imageSize, photoHolder.ivPhoto);
                 shareGetPhotoTask.execute();
-                dots = new ImageView[photoList.size()];
+
+                ImageView[] dots = new ImageView[photoList.size()];
                 for (int i = 0; i < photoList.size(); i++) {
-                    mImageView = new ImageView(getActivity());
+                    ImageView mImageView = new ImageView(getActivity());
                     dots[i] = mImageView;
                     LinearLayout.LayoutParams ll = new LinearLayout.LayoutParams
                             (new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,

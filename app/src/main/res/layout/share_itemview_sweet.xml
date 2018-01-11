@@ -54,18 +54,9 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvPhotoList"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
         </android.support.v7.widget.RecyclerView>
-
-        <LinearLayout
-            android:id="@+id/llviewGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -98,32 +89,34 @@
         android:layout_marginLeft="6dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvGood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="讚" />
+        <ImageView
+            android:id="@+id/ivGoodIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/lin_good_boder"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/tvGCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
-            android:text="14" />
+            android:text="0" />
 
-        <TextView
-            android:id="@+id/tvMIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="回覆" />
+        <ImageView
+            android:id="@+id/ivMessageIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/lin_msg"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/tvMCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
-            android:text="6" />
+            android:text="0" />
     </LinearLayout>
 
     <ImageView

@@ -51,11 +51,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //setTitle("我的收藏");
         int id = getIntent().getIntExtra("id", 0);
-        if (id == 1) {
-            Fragment fragment = new FavoriteFragment();
-            switchFragment(fragment);
+        Fragment fragment;
+        switch (id){
+            case 1:
+                fragment = new ShareFragment();
+                switchFragment(fragment);;
+                appTitle = "分享";
+                setTitle(appTitle);
+                break;
+
+            case 2:
+                fragment = new FavoriteFragment();
+                switchFragment(fragment);
+                appTitle = "我的收藏";
+                setTitle(appTitle);
+                break;
+        }
+        if (id == 2) {
+
         }
     }
 

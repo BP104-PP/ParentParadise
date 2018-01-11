@@ -18,7 +18,7 @@
     <string name="msg_InsertFail">Add Article Faild</string>
     <string name="msg_InsertSuccess">Add Article Success</string>
     <string name="msg_NoNetwork">No Network</string>
-    <string name="msg_NotUploadWithoutPicture">Photos or content not found!</string>
+    <string name="msg_NoUploadMessage">Photos or content not found!</string>
     <string name="title_activity_community_add">確定加好友？</string>
 	<string name="msg_NoDataFound">msg_NoDataFound</string>
     <string name="msg_NoFriendFound">msg_NoFriendFound</string>

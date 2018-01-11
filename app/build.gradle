@@ -33,5 +33,5 @@ dependencies {
     implementation 'com.android.support:cardview-v7:26.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.google.code.gson:gson:2.8.1'
-    compile 'com.zfdang.multiple-images-selector:multiple-images-selector:1.1.3'
+
 }

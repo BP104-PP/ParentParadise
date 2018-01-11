@@ -42,6 +42,20 @@ public class ShareServlet extends HttpServlet {
 			List<ShareData> shareList = shareDao.getAll();
 			writeText(response, gson.toJson(shareList));
 			
+		} else if (action.equals("goodChecked")) {
+			int memberNo = jsonObject.get("memberNo").getAsInt();
+			int shareId = jsonObject.get("shareId").getAsInt();
+			String goodType = jsonObject.get("goodType").getAsString();
+			int goodChecked = shareDao.checkGood(goodType, shareId, memberNo);
+			if (goodChecked == 0) {
+				int count = shareDao.insertGood(goodType, shareId, memberNo);
+				writeText(response, String.valueOf(count));
+			}else {
+				int count = shareDao.deleteGood(goodType, shareId, memberNo);
+				writeText(response, String.valueOf(count));
+			}
+			writeText(response, gson.toJson(goodChecked));
+			
 		} else if (action.equals("getHeadPhoto")) {
 			OutputStream os = response.getOutputStream();
 			int memberNo = jsonObject.get("memberNo").getAsInt();
@@ -54,7 +68,7 @@ public class ShareServlet extends HttpServlet {
 			}
 			os.write(headPhoto);
 			
-		} else if (action.equals("getPhotoList")) {
+		}  else if (action.equals("getPhotoList")) {
 			int shareId = jsonObject.get("shareId").getAsInt();
 			List<ShareData> photoList = shareDao.getPhotoList(shareId);
 			writeText(response, gson.toJson(photoList));
